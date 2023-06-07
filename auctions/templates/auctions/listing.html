@@ -1,0 +1,55 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>{{listing.title}}</h2>
+    <a href="{% url 'add_watchlist' listing.id %}" role="button" class="btn btn-outline-success btn-lg">Add to Watchlist</a>
+                        <img src={{listing.image.url}} class="img-fluid" alt="Generic placeholder image" width="300" height="300"><br><br>
+                            <div class="card mb-4">
+                                <div class="card-body p-4">
+                                    <div class="row align-items-center">
+                                            <div class="col-md-2 d-flex justify-content-center">
+                                                <div>
+                                                    <p class="small text-muted mb-4 pb-2">Name</p>
+                                                    <p class="lead fw-normal mb-0">{{listing.title}}</p>
+                                                </div>
+                                            </div>
+                                                <div class="col-md-2 d-flex justify-content-center">
+                                                    <div>
+                                                        <p class="small text-muted mb-4 pb-2">Description</p>
+                                                        <p class="lead fw-normal mb-0"><i class="fas fa-circle me-2" style="color: #fdd8d2;">
+                                                            </i>{{listing.description}}</p>
+                                                    </div>
+                                                </div>
+                                                    <div class="col-md-2 d-flex justify-content-center">
+                                                         <div>
+                                                            <p class="small text-muted mb-4 pb-2">Current Price</p>
+                                                            <p class="lead fw-normal mb-0">{{listing.price}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2 d-flex justify-content-center">
+                                                        <div>
+                                                            <p class="small text-muted mb-4 pb-2">Category</p>
+                                                            <p class="lead fw-normal mb-0"><i class="fas fa-circle me-2" style="color: #fdd8d2;">
+                                                                </i>{{listing.category}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container">
+                                <!--Django Model Form-->
+                                <h2 class="my-4">Add a new listing</h2>
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                    <label for="cbid">Current Bid</label>
+                                    <input type=text name="currentbid" id="cbid"></input>
+                                    <button class="btn btn-primary my-4" type="submit">Submit</button>
+                              </form>
+                            </div>
+                        
+
+{% endblock %}

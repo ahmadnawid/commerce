@@ -1,0 +1,51 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Active Listings</h2>
+
+    
+        {% for list in listing %}
+            {% if list.status %}
+                            <div class="card mb-4">
+                                <div class="card-body p-4">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-2">
+                                            <a href="{% url 'listing' list.id %}">
+                                                <img src={{list.image.url}} class="img-fluid" alt="Generic placeholder image">
+                                            </a>
+                                        </div>
+                                            <div class="col-md-2 d-flex justify-content-center">
+                                                <div>
+                                                    <p class="small text-muted mb-4 pb-2">Name</p>
+                                                    <p class="lead fw-normal mb-0">{{list.title}}</p>
+                                                </div>
+                                            </div>
+                                                <div class="col-md-2 d-flex justify-content-center">
+                                                    <div>
+                                                        <p class="small text-muted mb-4 pb-2">Description</p>
+                                                        <p class="lead fw-normal mb-0"><i class="fas fa-circle me-2" style="color: #fdd8d2;">
+                                                            </i>{{list.description}}</p>
+                                                    </div>
+                                                </div>
+                                                    <div class="col-md-2 d-flex justify-content-center">
+                                                         <div>
+                                                            <p class="small text-muted mb-4 pb-2">Price</p>
+                                                            <p class="lead fw-normal mb-0">{{list.price}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+            
+                                    </div>
+                                </div>
+                            </div>
+                        
+            {% else %}
+                
+            {% endif %}
+            
+
+        {% endfor %}
+
+{% endblock %}
